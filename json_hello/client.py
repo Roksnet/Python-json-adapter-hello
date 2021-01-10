@@ -27,27 +27,16 @@ class JsonClient:
                 }
         return args
 
-    def post_hello(self, name):
-        args = self._args()
-        url = f'{self.server_url}/hello'
-        print(f'\nAdd new item, POST {url}')
-        data = {'name': name}
-        return requests.post(url, json=data, **args)
-
     def get_hello(self, id):
         args = self._args()
-        url = f'{self.server_url}/hello/{id}'
-        print(f'\nGet item data, GET {url}')        
-        return requests.get(url, **args)
-        
-    def put_hello(self, id, new_name):
-        args = self._args()
-        url = f'{self.server_url}/hello/{id}'
-        print(f'\nModify item data, PUT {url}')                
-        data = {'name': new_name}
-        return requests.put(url, json=data, **args)
+        url = f'{self.server_url}/hello'
+        params = {'name': 'Linda'}
+        print(f'\nGet hello, GET {url}')        
+        return requests.get(url, params=params, **args)
 
 def show_response(response):
+    status = response.status_code
+    print(f'Response status: {status}')
     try:
         json_data = response.json()
     except:
@@ -79,19 +68,8 @@ def run_client():
     # Service client
     reg = JsonClient(xroad_client, url, userid=userid)
 
-    response = reg.post_hello('Linda')
+    response = reg.get_hello('Linda')
     data = show_response(response)
-    try:
-        id = data['id']
-    except:
-        print('Post did not work')
-        return
-
-    response = reg.get_hello(id)
-    show_response(response)
-
-    response = reg.put_hello(id, 'Amanda')
-    show_response(response)
     
 if __name__ == '__main__':
     run_client()

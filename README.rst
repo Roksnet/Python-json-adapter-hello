@@ -37,14 +37,21 @@ Install required dependency packages:
 Package subdirectory json_hello contains the following files:
 
 * server.py - includes services to be provided
-* client.py - includes demo client that calls server's services
-
+* client.py - includes demo client that calls server's service
+* static/openapi.yaml - service description file (OpenAPI)
+  
 To run the server in development mode:
 
 .. code-block:: bash
                 
    pserve –reload development.ini
 
+Service description file is served at the following URL:
+
+.. code-block:: bash
+
+   http://SERVER:6543/static/openapi.yaml
+   
 For running client, open another terminal window and activate the environment:
 
 .. code-block:: bash

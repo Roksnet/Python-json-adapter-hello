@@ -1,0 +1,43 @@
+openapi: 3.0.0
+info:
+  description: Example X-road service
+  version: 1.0.0
+  title: Hello X-road
+  license:
+    name: Apache 2.0
+    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+paths:
+  /services/hello:
+    post:
+      summary: Simple service
+      description: Say hello
+      operationId: get_hello
+      parameters:
+        - name: name
+          in: query
+          description: somebody's name
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  message:
+                    type: string
+        '400':
+          description: bad request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: error message          
