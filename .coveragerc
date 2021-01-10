@@ -1,0 +1,3 @@
+[run]
+source = json_hello
+omit = json_hello/test*
