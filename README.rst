@@ -6,10 +6,11 @@ Simple example of a X-road service
 ----------------------------------
 
 This is simple X-road demo server and client for playing around to get the idea how X-road services work.
-The services are based on JSON (REST) interface of X-road.
-For simplicity, this app does not connect to any database, though data used by the services will not be persisted.
+This example is based on X-road REST interface using JSON.
+For simplicity, this app does not connect to any database.
+More complicated REST example can be found at https://github.com/Roksnet/Python-json-adapter-sqla .
 
-Python 3 is required. As operation system you can use any modern Linux distribution. 
+Python 3 is required. As operation system you can use any modern Linux distribution, for example Ubuntu. 
 
 For development environment you can also use Microsoft Windows. For installing Python in Windows,
 we recommend to install Cygwin (http://cygwin.com/setup-x86_64.exe) and select Python 3 among

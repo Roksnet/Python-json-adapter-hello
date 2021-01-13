@@ -18,7 +18,7 @@ class JsonClient:
                    'X-Road-Client': self.xroad_client,
                    }
         if self.userid:
-            headers['X-Road-Userid'] = self.userid
+            headers['X-Road-UserId'] = self.userid
         if self.issue:
             headers['X-Road-Issue'] = self.issue
         timeout = (5,20)
@@ -62,7 +62,7 @@ def run_client():
     # X-Road-Client header value as xRoadInstance/memberClass/memberCode/subsystemCode    
     xroad_client = 'roksnet-dev/COM/12998179/roksnet-consumer'
 
-    # X-Road-Userid header value as country code + person code
+    # X-Road-UserId header value as country code + person code
     userid = 'EE30101010007' # REPLACE WITH AUTHENTICATED USER ID
 
     # Service client
