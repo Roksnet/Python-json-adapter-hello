@@ -5,7 +5,7 @@ def main(global_config, **settings):
     """
     with Configurator(settings=settings) as config:
         # static file for service description
-        config.add_static_view('static', 'static', cache_max_age=3600)
+        config.add_static_view('static', 'static')
     
         # X-road services
         config.add_route('services_hello', '/services/hello')
