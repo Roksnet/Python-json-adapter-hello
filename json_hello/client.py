@@ -49,15 +49,17 @@ def show_response(response):
 
 def run_client():
     # security server URL
-    security_server = 'http://1.2.3.4' # REPLACE WITH YOUR DATA
+    security_server = 'http://1.2.3.4' # REPLACE WITH INNER IP OF YOUR SECURITY SERVER
     json_protocol = 'r1'
-    serviceid = 'roksnet-dev/COM/12998179/roksnet-producer' # REPLACE WITH YOUR DATA
-
+    providerid = 'roksnet-dev/COM/12998179/populationdb' # REPLACE WITH ID OF YOUR PROVIDER
+    service_code = 'helloservice' # REPLACE WITH SERVICE CODE OF YOUR SERVICE
+    
     # normal URL (security server)
-    url = f'{security_server}/{json_protocol}/{serviceid}'
+    url_provider = f'{security_server}/{json_protocol}/{providerid}'
+    url_service = f'{url_provider}/{service_code}'
 
     # local URL (without using security server, for testing only)
-    url = 'http://localhost:6543/services'
+    url_provider = url_service = 'http://localhost:6543/services'
     
     # X-Road-Client header value as xRoadInstance/memberClass/memberCode/subsystemCode    
     xroad_client = 'roksnet-dev/COM/12998179/roksnet-consumer'
@@ -66,7 +68,7 @@ def run_client():
     userid = 'EE30101010007' # REPLACE WITH AUTHENTICATED USER ID
 
     # Service client
-    reg = JsonClient(xroad_client, url, userid=userid)
+    reg = JsonClient(xroad_client, url_service, userid=userid)
 
     response = reg.get_hello('Linda')
     data = show_response(response)

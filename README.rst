@@ -59,6 +59,12 @@ For running client, open another terminal window and activate the environment:
                 
    .  /srv/python-json-demo/bin/activate
 
+Service is running with base URL:
+
+.. code-block:: bash
+                
+   http://SERVER:6543/services
+   
 Run client:
 
 .. code-block:: bash
@@ -71,12 +77,26 @@ In case of errors you will see error messages.
 By default, the client will connect directly to the server, without using X-road.
 This configuration can be handy during preliminary development phase of the server or client. 
 If you see that services are working fine, you should setup services in security server.
-In the security server you need to configure service URL as:
 
-.. code-block:: bash
-                
-   http://SERVER:6543/services
+Open browser at user interface URL of your security server (port 4000).
+We assume that you have the information system already certified.
+Navigate to services page and press ADD REST.
+Modal window appears, insert following values:
 
+* URL Type: OpenAPI 3 Description
+* URL: http://SERVER:6543/static/openapi.yaml
+* Service Code: helloservice
+
+Save and you see the URL. Click on the service code. You see Service URL field filled with root URI of your server.
+Append /services to the Service URL (http://SERVER:6543/services). Save.
+
+Add access rights to your service consumer.
+   
+Open tab ENDPOINTS. You should see here all endpoints you have described in the description file.
+Grant your service consumer subsystem access rights for the endpoint.
+
+Close service form and enable the web service (click on the right of the URL).
+   
 To run client against X-road security server, modify client.py to use URL of the security server
 instead of local URL. You need to modify:
 

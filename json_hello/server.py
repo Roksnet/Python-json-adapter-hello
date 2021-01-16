@@ -1,7 +1,6 @@
 from datetime import datetime
 from pyramid.view import view_config
 from pyramid.response import Response
-import json
 import logging
 log = logging.getLogger(__name__)
 
@@ -24,9 +23,9 @@ def get_hello(request):
         log.error(ex)
         error = 'error occurred'
 
+    request.response.status_code = 400
     res = {'error': error}
-    # return response with status code 400 BAD REQUEST
-    return Response(json.dumps(res), status=400)
+    return res
 
 def _log_call(request):
     log.info('[%s] %s %s' % (request.headers.get('X-Road-Client'),
